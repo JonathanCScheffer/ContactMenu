@@ -1,5 +1,7 @@
 package ContactMenu;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Class that Creates a ContactList using Singleton Design Pattern
@@ -23,16 +25,35 @@ public class ContactList{
      * Add a contact to contactList
      * @param contact
      */
-    public void addContact(Contact contact){
+    public void addContact(String name,String cpf, String email,String address){
+        Contact contact = new Contact(name, cpf, email, address);
         contactList.add(contact);
     }
 
     /**
-     * Removes a contact from contactList
+     * Removes a contact from contactList by cpf
      * @param contact
      */
-    public void removeContact(Contact contact){
-        contactList.remove(contact);
+    public void removeContactbyCPF(String cpf){
+        for (Iterator<Contact> iterator = contactList.iterator(); iterator.hasNext(); ) {
+            Contact c = iterator.next();
+            if (cpf.equals(c.getCpf())) {
+                iterator.remove();
+            }
+        }        
+    }
+
+    /**
+     * Remove a contact from contactList by name
+     * @param name
+     */
+    public void removeContactbyName(String name){
+        for (Iterator<Contact> iterator = contactList.iterator(); iterator.hasNext(); ) {
+            Contact c = iterator.next();
+            if (name.equals(c.getName())) {
+                iterator.remove();
+            }
+        }        
     }
 
     /**

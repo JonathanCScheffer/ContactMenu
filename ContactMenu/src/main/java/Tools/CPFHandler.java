@@ -1,4 +1,4 @@
-package ContactMenu;
+package Tools;
 
 /**
  * Class that verify if a CPF number is or not valid

@@ -1,7 +1,9 @@
 package Commands;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
+import ContactMenu.App;
 import ContactMenu.CommandInterface;
 import ContactMenu.Contact;
 import ContactMenu.ContactList;
@@ -12,7 +14,7 @@ import ContactMenu.ContactList;
  */
 
 public class DisplayList implements CommandInterface{
-
+    Scanner scanner = new Scanner(System.in);
     ContactList contactList;
     public DisplayList(){
         contactList = ContactList.getInstance();
@@ -20,8 +22,20 @@ public class DisplayList implements CommandInterface{
     @Override
     public void execute() {
         ArrayList<Contact> cList = contactList.getContactList();
-        for (Contact c : cList) {
-            System.out.println(c);
+        if(cList.isEmpty()){
+            App.clearScreen();
+            App.println("The ContactList is empty.");
+            App.println("Press any key to continue...");
+            scanner.nextLine();
+        }
+        else{
+            App.clearScreen();
+            App.println("Contacts:");
+            App.println("Name - CPF - Email - Address");
+            for (Contact c : cList) {
+                System.out.println(c);
+            }
+            scanner.nextLine();
         }
     }
 }

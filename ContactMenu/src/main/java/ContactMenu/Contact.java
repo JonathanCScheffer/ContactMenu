@@ -59,6 +59,6 @@ public class Contact{
 
     @Override
     public String toString() {
-        return this.name + this.cpf + this.email+this.addressList.get(0);
+        return this.name +"-"+ this.cpf +"-"+ this.email+"-"+this.addressList.get(0);
     }
 }
