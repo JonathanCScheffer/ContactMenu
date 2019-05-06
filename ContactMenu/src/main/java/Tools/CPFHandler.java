@@ -71,7 +71,8 @@ public class CPFHandler {
 		for (int i = 0, j = 0; i < cpfString.length(); i++) {
 			char c = cpfString.charAt(i);
 			if (tryParseInt(c)) {
-				cpfNumList[j] = c;
+				int num = Character.getNumericValue(c);
+				cpfNumList[j] = num;
 				j++;
 			}
 
@@ -85,6 +86,8 @@ public class CPFHandler {
 		int firstDigit = 11 - (sum % 11);
 		if (firstDigit > 9 && cpfNumList[9] != 0)
 			return false;
+		count = 11;
+		sum = 0;
 		for (int i = 0; i < cpfNumList.length - 1; i++) {
 			sum += count * cpfNumList[i];
 			count--;
