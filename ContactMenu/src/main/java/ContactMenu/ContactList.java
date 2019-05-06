@@ -26,8 +26,7 @@ public class ContactList{
      * @param contact
      */
     public void addContact(String name,String cpf, String email,String address){
-        Contact contact = new Contact(name, cpf, email, address);
-        contactList.add(contact);
+        contactList.add(new Contact(name, cpf, email, address));
     }
 
     /**

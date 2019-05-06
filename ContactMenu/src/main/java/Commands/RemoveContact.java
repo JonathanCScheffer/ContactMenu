@@ -19,6 +19,7 @@ public class RemoveContact implements CommandInterface {
     ArrayList<Contact> cList = new ArrayList<Contact>();
     private RemoveType removeType;
     public RemoveContact(){
+        this.removeType = null;
     }
     public RemoveContact(RemoveType removeType){
         this.removeType = removeType;
