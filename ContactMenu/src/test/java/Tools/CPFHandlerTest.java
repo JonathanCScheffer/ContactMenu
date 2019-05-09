@@ -18,10 +18,23 @@ public class CPFHandlerTest{
         CPFHandler cpf = new CPFHandler("100.186.309-79");
         assertTrue(cpf.isValid());
     }
+
+    @Test
+    public void testIsValid1False(){
+        CPFHandler cpf = new CPFHandler("123.456.789-00");
+        assertFalse(cpf.isValid());
+    }
+
     @Test
     public void testIsValid2True(){
         CPFHandler cpf = new CPFHandler("123.456.789-10");
         assertTrue("CPF not valid.", cpf.isValid("100.186.309-79"));
+    }
+
+    @Test
+    public void testIsValid2False(){
+        CPFHandler cpf = new CPFHandler("123.456.789-10");
+        assertFalse("CPF not valid.", cpf.isValid("123.456.789-10"));
     }
 
 }

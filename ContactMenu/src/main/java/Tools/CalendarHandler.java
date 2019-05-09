@@ -30,7 +30,7 @@ public class CalendarHandler {
 		this.year = year;
 	}
 	/**
-	 * Method used to contruct the Calendar format String using month and year atributes
+	 * Method used to construct the Calendar format String using month and year atributes
 	 * @return stringformatCalendar
 	 */
 	public String CalendarBuilder() {

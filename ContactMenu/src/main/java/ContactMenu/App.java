@@ -30,8 +30,8 @@ public class App {
 		menuOptions.put("3.1",removeContactbyName);
 		menuOptions.put("3.2",removeContactbyCPF);
 		menuOptions.put("5", exitMenu);
-		Scanner scanner = new Scanner(System.in);
 		String userInput;
+		try(Scanner scanner = new Scanner(System.in)){
 		while(true){
 			do{
 				clearScreen();
@@ -41,6 +41,7 @@ public class App {
 			while(!menuOptions.containsKey(userInput));
 			control.setCommand(menuOptions.get(userInput));
 			control.makeCommand();
+		}
 		}
 	}
 	/**
