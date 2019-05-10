@@ -15,7 +15,7 @@ public class CPFHandlerTest{
      */
     @Test
     public void testIsValid1True(){
-        CPFHandler cpf = new CPFHandler("100.186.309-79");
+        CPFHandler cpf = new CPFHandler("718.394.156-65");
         assertTrue(cpf.isValid());
     }
 
@@ -28,7 +28,7 @@ public class CPFHandlerTest{
     @Test
     public void testIsValid2True(){
         CPFHandler cpf = new CPFHandler("123.456.789-10");
-        assertTrue("CPF not valid.", cpf.isValid("100.186.309-79"));
+        assertTrue("CPF not valid.", cpf.isValid("155.152.553-48"));
     }
 
     @Test

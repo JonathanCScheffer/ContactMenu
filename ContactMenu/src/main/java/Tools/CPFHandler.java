@@ -47,7 +47,9 @@ public class CPFHandler {
 			count--;
 		}
 		int firstDigit = 11 - (sum % 11);
-		if (firstDigit > 9 && cpfNumList[9] != 0)
+		if (firstDigit == 10)
+			firstDigit = 0;
+		if (firstDigit != cpfNumList[9])
 			return false;
 		count = 11;
 		sum = 0;
@@ -56,7 +58,9 @@ public class CPFHandler {
 			count--;
 		}
 		int secondDigit = 11 - (sum % 11);
-		if (secondDigit > 9 && cpfNumList[10] != 0)
+		if (secondDigit == 10)
+			secondDigit = 0;
+		if (secondDigit != cpfNumList[10])
 			return false;
 		return true;
 	}
@@ -84,7 +88,9 @@ public class CPFHandler {
 			count--;
 		}
 		int firstDigit = 11 - (sum % 11);
-		if (firstDigit > 9 && cpfNumList[9] != 0)
+		if (firstDigit == 10)
+			firstDigit = 0;
+		if (firstDigit != cpfNumList[9])
 			return false;
 		count = 11;
 		sum = 0;
@@ -93,7 +99,9 @@ public class CPFHandler {
 			count--;
 		}
 		int secondDigit = 11 - (sum % 11);
-		if (secondDigit > 9 && cpfNumList[10] != 0)
+		if (secondDigit == 10)
+			secondDigit = 0;
+		if (secondDigit != cpfNumList[10])
 			return false;
 		return true;
 	}
