@@ -1,6 +1,12 @@
 package Tools;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import ContactMenu.App;
+
 import java.lang.StringBuilder;
 
 /**
@@ -29,11 +35,26 @@ public class CalendarHandler {
 		this.month = month;
 		this.year = year;
 	}
+	public static GregorianCalendar parseDate(String birthday){
+		Pattern compile = Pattern.compile("?<day>\\d+)\\/(?<month>\\d+)\\/(?<year>\\d+");
+		Matcher matcher = compile.matcher(birthday);
+		matcher.find();
+		String day = matcher.group("day");
+		String month = matcher.group("month");
+		String year = matcher.group("year");
+		try{
+			return new GregorianCalendar(Integer.parseInt(year),Integer.parseInt(month)-1,Integer.parseInt(day));
+		}
+		catch(Exception exception){
+			App.println(exception);
+			return null;
+		}
+	}
 	/**
 	 * Method used to contruct the Calendar format String using month and year atributes
 	 * @return stringformatCalendar
 	 */
-	public String CalendarBuilder() {
+	public String calendarBuilder() {
 		int[][] matrix = new int[6][7];
 		GregorianCalendar firstDay = new GregorianCalendar(year,month-1,1);
 		StringBuilder sb = new StringBuilder();

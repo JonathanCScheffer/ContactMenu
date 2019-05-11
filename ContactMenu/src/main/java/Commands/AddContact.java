@@ -1,6 +1,7 @@
 package Commands;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 import ContactMenu.Address;
@@ -8,6 +9,7 @@ import ContactMenu.App;
 import ContactMenu.CommandInterface;
 import ContactMenu.ContactList;
 import Tools.CPFHandler;
+import Tools.CalendarHandler;
 
 /**
  * Command used Add a contact to ContactList
@@ -23,7 +25,8 @@ public class AddContact implements CommandInterface{
     @Override
     public void execute() {
         App.clearScreen();
-        String name,cpf,email;
+        String name,cpf,email,birthdayString;
+        GregorianCalendar birthday;
         App.println("Insert the Contact data:\n");
         App.println("Name:");
         name = scanner.nextLine();
@@ -37,6 +40,15 @@ public class AddContact implements CommandInterface{
         }
         App.println("Email:");
         email = scanner.nextLine();
+        App.println("Birthday:");
+        birthdayString = scanner.nextLine();
+        birthday = CalendarHandler.parseDate(birthdayString);
+        if(birthday==null){
+            App.println("The birthday is not valid!");
+            App.println("Error on adding a Contact to ContactList");
+            scanner.nextLine();
+            return;
+        }
         String optString;
         boolean valid=true;
         do{
@@ -88,7 +100,7 @@ public class AddContact implements CommandInterface{
                 Address address = new Address(adrsResidence, adrsNumberInt, adrsComp, adrsCity, adrsState, adrsCEP, adrsID);
                 ArrayList<Address> addressesList= new ArrayList<Address>();
                 addressesList.add(address);
-                contactList.addContact(name, cpf, email,addressesList);
+                contactList.addContact(name, cpf, email,birthday,addressesList);
                 App.println("The Contact" + name + "was sucessfully added to ContactList");
             } catch (Exception exception) {
                 App.println(exception.toString());
@@ -96,7 +108,7 @@ public class AddContact implements CommandInterface{
             }
         } else {
             try {
-                contactList.addContact(name, cpf, email);
+                contactList.addContact(name, cpf, email,birthday);
                 App.clearScreen();
                 App.repeatString("=",10);
                 App.println("The Contact" + name + "was sucessfully added to ContactList");

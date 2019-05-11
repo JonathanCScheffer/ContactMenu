@@ -1,6 +1,7 @@
 package ContactMenu;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.regex.Pattern;
 
 /**
@@ -11,26 +12,29 @@ public class Contact{
     private String name;
     private String cpf;
     private String email;
+    private GregorianCalendar birthday;
     private ArrayList<Address> addressList = new ArrayList<Address>();
 
     /**
      * Contructor for Contact Class. All args are needed.
      */
-    public Contact(String name,String cpf,String email,ArrayList<Address> addressList){
+    public Contact(String name,String cpf,String email,GregorianCalendar birthday,ArrayList<Address> addressList){
         super();
         this.name = name;
         this.cpf = cpf;
         this.email = email;
+        this.birthday = birthday;
         this.addressList = addressList;
     }
     /**
      * Contructor for Contact Class without address{Address}
      */
-    public Contact(String name,String cpf,String email){
+    public Contact(String name,String cpf,String email,GregorianCalendar birthday){
         super();
         this.name = name;
         this.cpf = cpf;
         this.email = email;
+        this.birthday = birthday;
         this.addressList = null;
     }
 
@@ -96,10 +100,10 @@ public class Contact{
     @Override
     public String toString() {
         if(addressList.size()>0){
-            return this.name +"-"+ this.cpf +"-"+ this.email+"-"+this.addressList.get(0);
+            return this.name +"-"+ this.cpf +"-"+ this.email+this.birthday+"-"+this.addressList.get(0);
         }
         else{
-            return this.name +"-"+ this.cpf +"-"+ this.email+"-"+"empty";
+            return this.name +"-"+ this.cpf +"-"+ this.email+this.birthday+"-"+"empty";
         }
     }
 }

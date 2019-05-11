@@ -1,6 +1,7 @@
 package ContactMenu;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.regex.Pattern;
 
@@ -30,15 +31,15 @@ public class ContactList{
      * Add a contact to contactList. All parameters are needed. 
      * @param contact
      */
-    public void addContact(String name,String cpf, String email, ArrayList<Address> address){
-        contactList.add(new Contact(name, cpf, email,address));
+    public void addContact(String name,String cpf, String email, GregorianCalendar birthday,ArrayList<Address> address){
+        contactList.add(new Contact(name, cpf, email,birthday,address));
     }
     /**
      * Add a contact to contactList (without address)
      * @param contact
      */
-    public void addContact(String name,String cpf, String email){
-        contactList.add(new Contact(name, cpf, email));
+    public void addContact(String name,String cpf, String email,GregorianCalendar birthday){
+        contactList.add(new Contact(name, cpf,email,birthday));
     }
 
     /**

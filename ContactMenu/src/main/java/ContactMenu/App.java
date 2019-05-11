@@ -20,7 +20,6 @@ public class App {
 		Control control = new Control();
 		CommandInterface displayList = new DisplayList();
 		CommandInterface addContact = new AddContact();
-		CommandInterface removeContact = new RemoveContact();
 		CommandInterface removeContactbyName = new RemoveContact(RemoveType.NAME);
 		CommandInterface removeContactbyCPF = new RemoveContact(RemoveType.CPF);
 		CommandInterface changeContact =  new ChangeContact();
