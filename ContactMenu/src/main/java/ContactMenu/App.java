@@ -23,10 +23,11 @@ public class App {
 		CommandInterface removeContact = new RemoveContact();
 		CommandInterface removeContactbyName = new RemoveContact(RemoveType.NAME);
 		CommandInterface removeContactbyCPF = new RemoveContact(RemoveType.CPF);
+		CommandInterface changeContact =  new ChangeContact();
 		CommandInterface exitMenu = new ExitMenu();
 		menuOptions.put("1", displayList);
 		menuOptions.put("2", addContact);
-		menuOptions.put("3", removeContact);
+		menuOptions.put("3", changeContact);
 		menuOptions.put("3.1",removeContactbyName);
 		menuOptions.put("3.2",removeContactbyCPF);
 		menuOptions.put("5", exitMenu);
@@ -53,6 +54,7 @@ public class App {
 		App.println("Select one of the options below:");
 		App.println("1 - Display ContactList");
 		App.println("2 - Add Contact");
+		App.println("3 - Change Contact");
 		App.println("3 - Remove Contact:");
 		App.println("	3.1 - Remove Contact by Name");
 		App.println("	3.2 - Remove Contact by CPF");
@@ -81,7 +83,7 @@ public class App {
 	 * Method used to Interface all the prints on the Console.
 	 * @param str
 	 */
-	public static void println(String str){
+	public static void println(Object str){
 		System.out.println(str);
 	}
 }

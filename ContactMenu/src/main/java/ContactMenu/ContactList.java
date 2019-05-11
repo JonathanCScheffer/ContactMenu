@@ -2,6 +2,8 @@ package ContactMenu;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.regex.Pattern;
+
 
 /**
  * Class that Creates a ContactList using Singleton Design Pattern
@@ -21,12 +23,22 @@ public class ContactList{
         return this.contactList;
     }
 
+    public void addContact(Contact contact){
+        contactList.add(contact);
+    }
     /**
-     * Add a contact to contactList
+     * Add a contact to contactList. All parameters are needed. 
      * @param contact
      */
-    public void addContact(String name,String cpf, String email,String address){
-        contactList.add(new Contact(name, cpf, email, address));
+    public void addContact(String name,String cpf, String email, ArrayList<Address> address){
+        contactList.add(new Contact(name, cpf, email,address));
+    }
+    /**
+     * Add a contact to contactList (without address)
+     * @param contact
+     */
+    public void addContact(String name,String cpf, String email){
+        contactList.add(new Contact(name, cpf, email));
     }
 
     /**
@@ -53,6 +65,23 @@ public class ContactList{
                 iterator.remove();
             }
         }        
+    }
+    public void removeContact(Contact contact){
+        contactList.remove(contact);
+    }
+    public ArrayList<Contact> searchContact(String contactName){
+        ArrayList<Contact> matchedContacts = new ArrayList<Contact>();
+        for (Contact contact : contactList) {
+            if(Pattern.matches(contactName, contact.getName())){
+                matchedContacts.add(contact);
+            }
+        }
+        if(matchedContacts.size()>0){
+            return matchedContacts;
+        }
+        else{
+            return null;
+        }
     }
 
     /**
