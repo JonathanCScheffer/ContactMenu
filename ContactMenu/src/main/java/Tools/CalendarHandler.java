@@ -36,7 +36,7 @@ public class CalendarHandler {
 		this.year = year;
 	}
 	public static GregorianCalendar parseDate(String birthday){
-		Pattern compile = Pattern.compile("?<day>\\d+)\\/(?<month>\\d+)\\/(?<year>\\d+");
+		Pattern compile = Pattern.compile("(?<day>\\d+)\\/(?<month>\\d+)\\/(?<year>\\d+)");
 		Matcher matcher = compile.matcher(birthday);
 		matcher.find();
 		String day = matcher.group("day");
