@@ -20,10 +20,10 @@ public class AddContact implements CommandInterface{
     Scanner scanner = new Scanner(System.in);
     ContactList contactList;
     public AddContact(){
-        contactList = ContactList.getInstance();
     }    
     @Override
     public void execute() {
+        contactList = ContactList.getInstance();
         App.clearScreen();
         String name,cpf,email,birthdayString;
         GregorianCalendar birthday;
@@ -64,8 +64,8 @@ public class AddContact implements CommandInterface{
         }
         while(valid);
         if(optString.contentEquals("Y")){
-            String adrsResidence, adrsNumber, adrsComp, adrsCity, adrsState, adrsCEP, adrsID;
-            int[] adrsNumberInt =  new int[10]; 
+            String adrsResidence,  adrsComp, adrsCity, adrsState, adrsCEP, adrsID;
+            int adrsNumber;
             App.println(App.repeatString("=", 10));
             App.println("ADDRESS MENU");
             App.println(App.repeatString("=", 10));
@@ -73,19 +73,7 @@ public class AddContact implements CommandInterface{
             App.println("Residence:");
             adrsResidence = scanner.nextLine();
             App.println("Residence Number:");
-            adrsNumber = scanner.nextLine();
-            for (int i = 0, j = 0; i < adrsNumber.length(); i++) {
-                char c = adrsNumber.charAt(i);
-                if (!CPFHandler.tryParseInt(c)) {
-                    App.println("The Address number is not valid!");
-                    App.println("Error on adding a Contact to ContactList");
-                    scanner.nextLine();
-                    return;
-                } else {
-                    int num = Character.getNumericValue(c);
-                    adrsNumberInt[j] = num;
-                }
-            }
+            adrsNumber = scanner.nextInt();
             App.println("Complement:");
             adrsComp = scanner.nextLine();
             App.println("City:");
@@ -97,7 +85,7 @@ public class AddContact implements CommandInterface{
             App.println("Identifycation:");
             adrsID = scanner.nextLine();
             try {
-                Address address = new Address(adrsResidence, adrsNumberInt, adrsComp, adrsCity, adrsState, adrsCEP, adrsID);
+                Address address = new Address(adrsResidence, adrsNumber, adrsComp, adrsCity, adrsState, adrsCEP, adrsID);
                 ArrayList<Address> addressesList= new ArrayList<Address>();
                 addressesList.add(address);
                 contactList.addContact(name, cpf, email,birthday,addressesList);

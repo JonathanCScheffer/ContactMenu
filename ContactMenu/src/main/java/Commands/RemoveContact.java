@@ -13,36 +13,35 @@ import ContactMenu.ContactList;
  * @author = Jonathan Scheffer
  */
 public class RemoveContact implements CommandInterface {
-    public enum RemoveType{NAME,CPF};
     Scanner scanner = new Scanner(System.in);
     ContactList contactList;
-    ArrayList<Contact> cList = new ArrayList<Contact>();
-    private RemoveType removeType;
     public RemoveContact(){
-        this.removeType = null;
-    }
-    public RemoveContact(RemoveType removeType){
-        this.removeType = removeType;
-        contactList = ContactList.getInstance();
     }
     @Override
     public void execute() {
-        if(removeType==RemoveType.CPF){
-            App.clearScreen();
-            String cpf;
-            App.println("Insert the Contact CPF:\n");
-            cpf = scanner.nextLine();
-            contactList.removeContactbyCPF(cpf);
-        }
-        else if(removeType==RemoveType.NAME){
-            App.clearScreen();
-            String name;
-            App.println("Insert the Contact Name:\n");
-            name = scanner.nextLine();
-            contactList.removeContactbyName(name);
-        }
-        else{
-            App.println("Command Not Found");
+        contactList = ContactList.getInstance();
+        String contactName;
+        ArrayList<Contact> matchedContacts;
+        App.clearScreen();
+        App.println("Insert the name of the contact that you want to remove:");
+        contactName = scanner.nextLine();
+        matchedContacts = contactList.searchContact(contactName);
+        if (matchedContacts.size() > 0) {
+            App.println("The contacts below were found:");
+            for (int i = 0; i < matchedContacts.size(); i++) {
+                Contact foundedContact = matchedContacts.get(i);
+                App.println(i + foundedContact.getName());
+            }
+            App.println("Select the contacts that you want to change:");
+            int option;
+            do {
+                option = scanner.nextInt();
+            } while (option > matchedContacts.size() || option < 0);
+            for (Contact contact : contactList.getContactList()) {
+                if (contact.equals(matchedContacts.get(option))) {
+                    contactList.removeContact(contact);
+                }
+            }
         }
     }
 }

@@ -2,14 +2,14 @@ package ContactMenu;
 
 public class Address {
     private String residence;
-    private int[] residenceNumber;
+    private int residenceNumber;
     private String complement;
     private String city;
     private String state;
     private String CEP;
     private String addressID;
 
-    public Address(String residence, int[] residenceNumber, String complement, String city, String state, String CEP, String addressID) {
+    public Address(String residence, int residenceNumber, String complement, String city, String state, String CEP, String addressID) {
         this.residence = residence;
         this.residenceNumber = residenceNumber;
         this.complement = complement;
@@ -27,11 +27,11 @@ public class Address {
         this.residence = residence;
     }
 
-    public int[] getResidenceNumber() {
+    public int getResidenceNumber() {
         return this.residenceNumber;
     }
 
-    public void setResidenceNumber(int[] residenceNumber) {
+    public void setResidenceNumber(int residenceNumber) {
         this.residenceNumber = residenceNumber;
     }
 

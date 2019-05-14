@@ -73,7 +73,7 @@ public class ContactList{
     public ArrayList<Contact> searchContact(String contactName){
         ArrayList<Contact> matchedContacts = new ArrayList<Contact>();
         for (Contact contact : contactList) {
-            if(Pattern.matches(contactName, contact.getName())){
+            if(Pattern.matches("\b"+contactName, contact.getName())){
                 matchedContacts.add(contact);
             }
         }

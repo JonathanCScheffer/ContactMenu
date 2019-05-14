@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.regex.Pattern;
 
+import Tools.CPFHandler;
+
 /**
  * Class that create a Contact Person
  * @author Jonathan Scheffer
  */
-public class Contact{
+public class Contact implements Comparable<Contact>{
     private String name;
     private String cpf;
     private String email;
@@ -35,7 +37,6 @@ public class Contact{
         this.cpf = cpf;
         this.email = email;
         this.birthday = birthday;
-        this.addressList = null;
     }
 
     /**
@@ -50,11 +51,22 @@ public class Contact{
     public String getEmail() {
         return this.email;
     }
+
+    public GregorianCalendar getBirthday() {
+        return this.birthday;
+    }
+
+    public void setBirthday(GregorianCalendar birthday) {
+        this.birthday = birthday;
+    }
+
 	public void setName(String name) {
         this.name = name;
     }
     public void setCpf(String cpf) {
-        this.cpf = cpf;
+        if(CPFHandler.isValid(cpf)){
+            this.cpf = cpf;
+        }
     }
     public void setEmail(String email) {
         this.email = email;
@@ -78,14 +90,14 @@ public class Contact{
     }
 
     /**
-     * Search for all addresses in addressesList.Uses Regex
+     * Search for all addresses in addressesList. Uses Regex
      * @param addressName
      * @return matchedAddresses
      */
     public ArrayList<Address> searchAddresses(String addressName){
         ArrayList<Address> matchedAddreses = new ArrayList<Address>();
         for (Address address : addressList) {
-            if(Pattern.matches(addressName, address.getResidence())){
+            if(Pattern.matches("\b"+addressName, address.getResidence())){
                 matchedAddreses.add(address);
             }
         }
@@ -99,11 +111,16 @@ public class Contact{
 
     @Override
     public String toString() {
-        if(addressList.size()>0){
-            return this.name +"-"+ this.cpf +"-"+ this.email+this.birthday+"-"+this.addressList.get(0);
+        if(addressList.isEmpty()){
+            return this.name +"-"+ this.cpf +"-"+ this.email+"-"+"empty";
         }
         else{
-            return this.name +"-"+ this.cpf +"-"+ this.email+this.birthday+"-"+"empty";
+            return this.name +"-"+ this.cpf +"-"+ this.email+"-"+this.addressList.get(0);
         }
+    }
+
+    @Override
+    public int compareTo(Contact contact){
+        return this.name.compareToIgnoreCase(contact.name);
     }
 }

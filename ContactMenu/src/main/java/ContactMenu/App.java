@@ -1,7 +1,6 @@
 package ContactMenu;
 
 import Commands.*;
-import Commands.RemoveContact.RemoveType;
 
 import java.util.Scanner;
 import java.util.HashMap;
@@ -20,16 +19,14 @@ public class App {
 		Control control = new Control();
 		CommandInterface displayList = new DisplayList();
 		CommandInterface addContact = new AddContact();
-		CommandInterface removeContactbyName = new RemoveContact(RemoveType.NAME);
-		CommandInterface removeContactbyCPF = new RemoveContact(RemoveType.CPF);
+		CommandInterface removeContact = new RemoveContact();
 		CommandInterface changeContact =  new ChangeContact();
 		CommandInterface exitMenu = new ExitMenu();
 		menuOptions.put("1", displayList);
 		menuOptions.put("2", addContact);
 		menuOptions.put("3", changeContact);
-		menuOptions.put("3.1",removeContactbyName);
-		menuOptions.put("3.2",removeContactbyCPF);
-		menuOptions.put("5", exitMenu);
+		menuOptions.put("4", removeContact);
+		menuOptions.put("0", exitMenu);
 		Scanner scanner = new Scanner(System.in);
 		String userInput;
 		while(true){
@@ -54,11 +51,10 @@ public class App {
 		App.println("1 - Display ContactList");
 		App.println("2 - Add Contact");
 		App.println("3 - Change Contact");
-		App.println("3 - Remove Contact:");
-		App.println("	3.1 - Remove Contact by Name");
-		App.println("	3.2 - Remove Contact by CPF");
-		App.println("4 - Order ContactList");
-		App.println("5 - Exit ContactList menu");
+		App.println("4 - Remove Contact");
+		App.println("5 - Display Birthday List");
+		App.println("6 - PrintTags");
+		App.println("0 - Exit ContactList menu");
 	}
 	/**
 	 * Method used to repeat a String string int times times
