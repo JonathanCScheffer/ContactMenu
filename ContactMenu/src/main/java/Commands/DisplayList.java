@@ -33,7 +33,7 @@ public class DisplayList implements CommandInterface{
             App.clearScreen();
             Collections.sort(cList);
             int option=-1;
-            getOptions(option);
+            option = getOptions(option);
             sortList(cList, option);
             App.clearScreen();
             App.println("Contacts:");
@@ -41,7 +41,7 @@ public class DisplayList implements CommandInterface{
             for (Contact c : cList) {
                 App.println(c);
             }
-            scanner.nextLine();
+            int i = scanner.nextInt();
         }
     }
     private int getOptions(int option){
@@ -58,8 +58,10 @@ public class DisplayList implements CommandInterface{
         switch(option){
             case 1:
                 Collections.sort(cList);
+                break;
             case 2:
                 Collections.sort(cList,Collections.reverseOrder());
+                break;
             default:
                 return;
         }

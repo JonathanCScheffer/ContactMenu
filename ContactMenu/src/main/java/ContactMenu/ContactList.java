@@ -73,7 +73,7 @@ public class ContactList{
     public ArrayList<Contact> searchContact(String contactName){
         ArrayList<Contact> matchedContacts = new ArrayList<Contact>();
         for (Contact contact : contactList) {
-            if(Pattern.matches("\b"+contactName, contact.getName())){
+            if(Pattern.matches("\\b"+contactName, contact.getName())){
                 matchedContacts.add(contact);
             }
         }
@@ -92,4 +92,8 @@ public class ContactList{
     public static ContactList getInstance(){
         return instance;
     }
+
+	public Iterator<Contact> iterator() {
+		return contactList.iterator();
+	}
 }

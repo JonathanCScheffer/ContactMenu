@@ -102,11 +102,11 @@ public class ChangeContact implements CommandInterface {
         }
     }
     private void changeContactAttributes(Contact contact){
-        App.clearScreen();
         App.println("Contact selected:");
         App.println("Change the contacts parameters.");
-        App.println("Current Name: " + contact.getName());
-        contact.setName(scanner.nextLine());
+        //App.println("Current Name: " + contact.getName());
+        //String name = scanner.nextLine();
+        //contact.setName(name);
         App.clearScreen();
         App.println("Current CPF: " + contact.getCpf());
         String cpfString = scanner.nextLine();

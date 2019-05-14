@@ -1,6 +1,7 @@
 package Commands;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import ContactMenu.App;
@@ -20,6 +21,7 @@ public class RemoveContact implements CommandInterface {
     @Override
     public void execute() {
         contactList = ContactList.getInstance();
+        ArrayList<Contact> cList = contactList.getContactList();
         String contactName;
         ArrayList<Contact> matchedContacts;
         App.clearScreen();
@@ -37,9 +39,13 @@ public class RemoveContact implements CommandInterface {
             do {
                 option = scanner.nextInt();
             } while (option > matchedContacts.size() || option < 0);
-            for (Contact contact : contactList.getContactList()) {
+            Iterator<Contact> itr = contactList.iterator();
+            while(itr.hasNext()){
+                Contact contact = itr.next();
                 if (contact.equals(matchedContacts.get(option))) {
-                    contactList.removeContact(contact);
+                    itr.remove();
+                    App.println("Contact was sucessfully removed!");
+                    scanner.nextLine();
                 }
             }
         }

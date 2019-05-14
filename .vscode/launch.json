@@ -16,6 +16,7 @@
             "name": "Debug (Launch)-App<ContactMenu>",
             "request": "launch",
             "mainClass": "ContactMenu.App",
+            "console": "externalTerminal",
             "projectName": "ContactMenu"
         }
     ]
