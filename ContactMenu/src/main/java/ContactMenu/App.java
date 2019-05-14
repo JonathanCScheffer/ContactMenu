@@ -21,11 +21,15 @@ public class App {
 		CommandInterface addContact = new AddContact();
 		CommandInterface removeContact = new RemoveContact();
 		CommandInterface changeContact =  new ChangeContact();
+		CommandInterface displayBirthdayList = new DisplayBirthdayList();
+		CommandInterface printLabel = new PrintLabel();
 		CommandInterface exitMenu = new ExitMenu();
 		menuOptions.put("1", displayList);
 		menuOptions.put("2", addContact);
 		menuOptions.put("3", changeContact);
 		menuOptions.put("4", removeContact);
+		menuOptions.put("5", displayBirthdayList);
+		menuOptions.put("6", printLabel);
 		menuOptions.put("0", exitMenu);
 		Scanner scanner = new Scanner(System.in);
 		String userInput;
