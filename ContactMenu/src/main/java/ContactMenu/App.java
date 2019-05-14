@@ -23,12 +23,14 @@ public class App {
 		CommandInterface removeContactbyName = new RemoveContact(RemoveType.NAME);
 		CommandInterface removeContactbyCPF = new RemoveContact(RemoveType.CPF);
 		CommandInterface changeContact =  new ChangeContact();
+		CommandInterface printLabel = new PrintLabel();
 		CommandInterface exitMenu = new ExitMenu();
 		menuOptions.put("1", displayList);
 		menuOptions.put("2", addContact);
 		menuOptions.put("3", changeContact);
 		menuOptions.put("3.1",removeContactbyName);
 		menuOptions.put("3.2",removeContactbyCPF);
+		menuOptions.put("7",printLabel);
 		menuOptions.put("5", exitMenu);
 		Scanner scanner = new Scanner(System.in);
 		String userInput;
@@ -59,6 +61,7 @@ public class App {
 		App.println("	3.2 - Remove Contact by CPF");
 		App.println("4 - Order ContactList");
 		App.println("5 - Exit ContactList menu");
+		App.println("7 - Print Label");
 	}
 	/**
 	 * Method used to repeat a String string int times times
