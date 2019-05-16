@@ -8,11 +8,9 @@ import ContactMenu.Contact;
 import ContactMenu.App;
 import ContactMenu.CommandInterface;
 import ContactMenu.ContactList;
-import Tools.CPFHandler;
 
 /**
- * Command used Add a contact to ContactList
- * 
+ * Command used to change a contact from ContactList
  * @author = Jonathan Scheffer
  */
 
@@ -36,13 +34,18 @@ public class ChangeContact implements CommandInterface {
             App.println("The contacts below were found:");
             for (int i = 0; i < matchedContacts.size(); i++) {
                 Contact foundedContact = matchedContacts.get(i);
-                App.println(i + foundedContact.getName());
+                App.println(i +"-"+ foundedContact.getName());
             }
-            App.println("Select the contacts that you want to change:");
             int option;
             do {
+                App.println("Select the contacts that you want to change:");
+                App.println("Tap (-1) to exit");
                 option = scanner.nextInt();
-            } while (option > matchedContacts.size() || option < 0);
+                scanner.nextLine();
+            } while (option > matchedContacts.size()-1 || option < -1);
+            if(option==-1){
+                return;
+            }
             for (Contact contact : contactList.getContactList()) {
                 if (contact.equals(matchedContacts.get(option))) {
                     changeContactAttributes(contact);
@@ -55,6 +58,7 @@ public class ChangeContact implements CommandInterface {
                     case 2:
                         App.println("Choose one of the Addresses to delete:");
                         option = scanner.nextInt();
+                        scanner.nextLine();
                         contact.removeContactAdress(aList.get(option));
                         App.println("The Contact has been sucessfully changed!");
                         break;
@@ -69,8 +73,13 @@ public class ChangeContact implements CommandInterface {
             }
         } else {
             App.println("No Contact has been found!");
+            scanner.nextLine();
         }
     }
+    /**
+     * Class method used to interact with the user, changing all the selected address parameters.
+     * @param contact
+     */
     private void addContactAdress(Contact contact){
         App.clearScreen();
         String adrsResidence, adrsComp, adrsCity, adrsState, adrsCEP, adrsID;
@@ -83,6 +92,7 @@ public class ChangeContact implements CommandInterface {
         adrsResidence = scanner.nextLine();
         App.println("Residence Number: ");
         adrsNumber = scanner.nextInt();
+        scanner.nextLine();
         App.println("Complement:");
         adrsComp = scanner.nextLine();
         App.println("City:");
@@ -101,23 +111,29 @@ public class ChangeContact implements CommandInterface {
             App.println("Error on Adding Contact to ContactList");
         }
     }
+    /**
+     * Class method used to interact with the user, changing all the selected contact parameters.
+     * @param contact
+     */
     private void changeContactAttributes(Contact contact){
         App.println("Contact selected:");
         App.println("Change the contacts parameters.");
-        //App.println("Current Name: " + contact.getName());
-        //String name = scanner.nextLine();
-        //contact.setName(name);
+        App.println("Current Name: " + contact.getName());
+        contact.setName(scanner.nextLine());
         App.clearScreen();
         App.println("Current CPF: " + contact.getCpf());
         String cpfString = scanner.nextLine();
-        if(CPFHandler.isValid(cpfString)){
-            contact.setCpf(cpfString);
-        }
+        contact.setCpf(cpfString);
         App.clearScreen();
         App.println("Currente Email: " + contact.getEmail());
         contact.setEmail(scanner.nextLine());
         App.println("Contact Data Sucessfully changed!");
     }
+    /**
+     * Class method used to interact with the user, asking if want to change the addresses params.
+     * @param contact
+     * @return
+     */
     private int getAddListOption(Contact contact){
         int option = 0;
         App.println("Choose one option:");
@@ -126,9 +142,15 @@ public class ChangeContact implements CommandInterface {
         App.println("0 - Finish Contact Changes");
         do {
             option = scanner.nextInt();
+            scanner.nextLine();
         } while ((option > 2) || (option < 0));
         return option;
     }
+    /**
+     * Class method used to get all adresses of a contact from ContactList.
+     * @param contact
+     * @return
+     */
     private ArrayList<Address> getAddressList(Contact contact){
         ArrayList<Address> aList = new ArrayList<Address>();
         aList = contact.getAddressList();

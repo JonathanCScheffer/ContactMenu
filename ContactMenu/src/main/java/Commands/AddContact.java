@@ -50,19 +50,19 @@ public class AddContact implements CommandInterface{
             return;
         }
         String optString;
-        boolean valid=true;
+        boolean invalid=true;
         do{
             App.println("Do you wish to insert an address?Y|N");
             optString = scanner.nextLine();
             optString = optString.toUpperCase();
             if(optString.contentEquals("Y")){
-                valid=false;
+                invalid=false;
             }
             if(optString.contentEquals("N")){
-                valid=false;
+                invalid=false;
             }
         }
-        while(valid);
+        while(invalid);
         if(optString.contentEquals("Y")){
             String adrsResidence,  adrsComp, adrsCity, adrsState, adrsCEP, adrsID;
             int adrsNumber;
@@ -74,6 +74,7 @@ public class AddContact implements CommandInterface{
             adrsResidence = scanner.nextLine();
             App.println("Residence Number:");
             adrsNumber = scanner.nextInt();
+            scanner.nextLine();
             App.println("Complement:");
             adrsComp = scanner.nextLine();
             App.println("City:");
@@ -89,7 +90,7 @@ public class AddContact implements CommandInterface{
                 ArrayList<Address> addressesList= new ArrayList<Address>();
                 addressesList.add(address);
                 contactList.addContact(name, cpf, email,birthday,addressesList);
-                App.println("The Contact" + name + "was sucessfully added to ContactList");
+                App.println("The Contact " + name + " was sucessfully added to ContactList");
             } catch (Exception exception) {
                 App.println(exception.toString());
                 App.println("Error on Adding Contact to ContactList");

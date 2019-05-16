@@ -3,7 +3,10 @@ package ContactMenu;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 
 
 /**
@@ -42,47 +45,24 @@ public class ContactList{
         contactList.add(new Contact(name, cpf,email,birthday));
     }
 
-    /**
-     * Removes a contact from contactList by cpf
-     * @param contact
-     */
-    public void removeContactbyCPF(String cpf){
-        for (Iterator<Contact> iterator = contactList.iterator(); iterator.hasNext(); ) {
-            Contact c = iterator.next();
-            if (cpf.equals(c.getCpf())) {
-                iterator.remove();
-            }
-        }        
-    }
-
-    /**
-     * Remove a contact from contactList by name
-     * @param name
-     */
-    public void removeContactbyName(String name){
-        for (Iterator<Contact> iterator = contactList.iterator(); iterator.hasNext(); ) {
-            Contact c = iterator.next();
-            if (name.equals(c.getName())) {
-                iterator.remove();
-            }
-        }        
-    }
     public void removeContact(Contact contact){
         contactList.remove(contact);
     }
+    /**
+     * Search contactName of all contacts in contactList.
+     * @param contactName
+     * @return
+     */
     public ArrayList<Contact> searchContact(String contactName){
         ArrayList<Contact> matchedContacts = new ArrayList<Contact>();
+        Pattern pattern = Pattern.compile("\\b"+contactName);
         for (Contact contact : contactList) {
-            if(Pattern.matches("\\b"+contactName, contact.getName())){
+            Matcher matcher = pattern.matcher(contact.getName());
+            if(matcher.lookingAt()){
                 matchedContacts.add(contact);
             }
         }
-        if(matchedContacts.size()>0){
-            return matchedContacts;
-        }
-        else{
-            return null;
-        }
+        return matchedContacts;
     }
 
     /**

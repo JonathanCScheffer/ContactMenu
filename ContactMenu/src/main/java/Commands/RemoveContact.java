@@ -21,7 +21,6 @@ public class RemoveContact implements CommandInterface {
     @Override
     public void execute() {
         contactList = ContactList.getInstance();
-        ArrayList<Contact> cList = contactList.getContactList();
         String contactName;
         ArrayList<Contact> matchedContacts;
         App.clearScreen();
@@ -38,6 +37,7 @@ public class RemoveContact implements CommandInterface {
             int option;
             do {
                 option = scanner.nextInt();
+                scanner.nextLine();
             } while (option > matchedContacts.size() || option < 0);
             Iterator<Contact> itr = contactList.iterator();
             while(itr.hasNext()){

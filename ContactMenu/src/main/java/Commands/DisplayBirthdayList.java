@@ -28,9 +28,9 @@ public class DisplayBirthdayList implements CommandInterface{
         Collections.sort(cList, new Comparator<Contact>() {
             @Override
             public int compare(Contact c1, Contact c2) {
-                int diaC1 = c1.getBirthday().get(GregorianCalendar.DAY_OF_YEAR);
-                int diaC2 = c2.getBirthday().get(GregorianCalendar.DAY_OF_YEAR);
-                return Integer.compare(diaC1, diaC2);
+                GregorianCalendar diaC1 = c1.getBirthday();
+                GregorianCalendar diaC2 = c2.getBirthday();
+                return diaC1.compareTo(diaC2);
             }
         });
         for (Contact c : cList) {
@@ -38,6 +38,11 @@ public class DisplayBirthdayList implements CommandInterface{
         }
         scanner.nextLine();
     }
+    /**
+     * Converts the GregorianCalendar into SimpleDateFormat.
+     * @param c
+     * @return
+     */
     private String getDateFormat(Contact c){
         SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
         return data.format(c.getBirthday().getTime());

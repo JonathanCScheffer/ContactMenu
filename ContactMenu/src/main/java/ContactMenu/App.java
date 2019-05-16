@@ -38,25 +38,25 @@ public class App {
 		ArrayList<Address> addressesList1 = new ArrayList<Address>();
 		Address address1 = new Address("Rua Xaxim", 10, "Alto", "Pinho", "PR", "80000-100", "Casa");
 		addressesList1.add(address1);
-		contactList.addContact("Andre", "565.846.354-81", "andre@com", CalendarHandler.parseDate("01/12/99"),
+		contactList.addContact("Andre", "565.846.354-81", "andre@com", CalendarHandler.parseDate("01/12/1990"),
 				addressesList1);
 
 		ArrayList<Address> addressesList3 = new ArrayList<Address>();
 		Address address3 = new Address("Rua Alto", 10, "Hauer", "Vila", "MS", "60607-123", "Predio");
 		addressesList3.add(address3);
-		contactList.addContact("Noe", "977.897.276-13", "noe@gg", CalendarHandler.parseDate("25/08/01"),
+		contactList.addContact("Noe", "977.897.276-13", "noe@gg", CalendarHandler.parseDate("25/08/1997"),
 				addressesList3);
 
 		ArrayList<Address> addressesList2 = new ArrayList<Address>();
 		Address address2 = new Address("Rua Alto", 10, "Centro", "Cyti", "RN", "52124-076", "Chacara");
 		addressesList2.add(address2);
-		contactList.addContact("Jose", "837.306.676-67", "jose@com", CalendarHandler.parseDate("12/03/74"),
+		contactList.addContact("Jose", "837.306.676-67", "jose@com", CalendarHandler.parseDate("12/03/2003"),
 				addressesList2);
 
 		ArrayList<Address> addressesList4 = new ArrayList<Address>();
 		Address address4 = new Address("Rua Alto", 10, "Centro", "Cyti", "RN", "52124-076", "Chacara");
-		addressesList4.add(address2);
-		contactList.addContact("Rodriguks", "052.679.851-39", "rodrigo@com", CalendarHandler.parseDate("07/01/96"),
+		addressesList4.add(address4);
+		contactList.addContact("Rodriguks", "052.679.851-39", "rodrigo@com", CalendarHandler.parseDate("07/01/2019"),
 				addressesList4);
 
 		ArrayList<Address> addressesList5 = new ArrayList<Address>();
@@ -64,7 +64,7 @@ public class App {
 		Address address6 = new Address("Rua Luz", 10, "Wesley", "Cajuru", "CB", "12354-076", "Rancho");
 		addressesList5.add(address5);
 		addressesList5.add(address6);
-		contactList.addContact("Jeaoun", "085.436.309-24", "jean@com", CalendarHandler.parseDate("26/01/74"),
+		contactList.addContact("Jeaoun", "085.436.309-24", "jean@com", CalendarHandler.parseDate("26/01/1973"),
 				addressesList5);
 
 		Scanner scanner = new Scanner(System.in);
@@ -110,11 +110,8 @@ public class App {
 	 * Method used to clear Console Screen. Similar to cls(Windows Promt) and clear(Bash).
 	 */
 	public static void clearScreen(){
-		for(int i = 0; i <= 50; i++){
-			System.out.println();		
-		}
-		//System.out.print("\033[H\033[2J");
-		//System.out.flush();
+		System.out.print("\033[H\033[2J");
+		System.out.flush();
 	}
 
 	/**

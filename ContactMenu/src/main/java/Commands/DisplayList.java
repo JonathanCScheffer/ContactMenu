@@ -34,6 +34,9 @@ public class DisplayList implements CommandInterface{
             Collections.sort(cList);
             int option=-1;
             option = getOptions(option);
+            if (option==0){
+                return;
+            }
             sortList(cList, option);
             App.clearScreen();
             App.println("Contacts:");
@@ -41,9 +44,14 @@ public class DisplayList implements CommandInterface{
             for (Contact c : cList) {
                 App.println(c);
             }
-            int i = scanner.nextInt();
+            scanner.nextLine();
         }
     }
+    /**
+     * Method used to receive the sort order from the user.
+     * @param option
+     * @return
+     */
     private int getOptions(int option){
         do{
             App.println("Insert the order :");
@@ -51,9 +59,15 @@ public class DisplayList implements CommandInterface{
             App.println("2 - Reversal Alphabetical order");
             App.println("0 - Return to ContactMenu");
             option = scanner.nextInt();
+            scanner.nextLine();
         }while(option>2 || option <0);
         return option;
     }
+    /**
+     * Method used to sort cList{ArrayList<Contact>} based on the user option{int}.
+     * @param cList
+     * @param option
+     */
     private void sortList(ArrayList<Contact> cList,int option){
         switch(option){
             case 1:

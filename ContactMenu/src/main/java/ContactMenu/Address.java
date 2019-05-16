@@ -77,13 +77,12 @@ public class Address {
 
     @Override
     public String toString() {
-        return "{" +
+        return 
             " residence='" + getResidence() + "'" +
             ", residenceNumber='" + getResidenceNumber() + "'" +
             ", complement='" + getComplement() + "'" +
             ", city='" + getCity() + "'" +
             ", state='" + getState() + "'" +
-            ", CEP='" + getCEP() + "'" +
-            "}";
+            ", CEP='" + getCEP() + "'";
     }
 }

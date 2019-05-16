@@ -2,6 +2,7 @@ package ContactMenu;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import Tools.CPFHandler;
@@ -90,23 +91,20 @@ public class Contact implements Comparable<Contact>{
     }
 
     /**
-     * Search for all addresses in addressesList. Uses Regex
+     * Search for all addresses in addressesList. Uses Regex.
      * @param addressName
      * @return matchedAddresses
      */
     public ArrayList<Address> searchAddresses(String addressName){
         ArrayList<Address> matchedAddreses = new ArrayList<Address>();
+        Pattern pattern = Pattern.compile("\\b"+addressName);
         for (Address address : addressList) {
-            if(Pattern.matches("\b"+addressName, address.getResidence())){
+            Matcher matcher = pattern.matcher(address.getResidence());
+            if(matcher.lookingAt()){
                 matchedAddreses.add(address);
             }
         }
-        if(matchedAddreses.size()>0){
-            return matchedAddreses;
-        }
-        else{
-            return null;
-        }
+        return matchedAddreses;
     }
 
     @Override
