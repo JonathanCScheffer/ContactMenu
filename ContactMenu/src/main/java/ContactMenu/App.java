@@ -60,11 +60,11 @@ public class App {
 				addressesList4);
 
 		ArrayList<Address> addressesList5 = new ArrayList<Address>();
-		Address address5 = new Address("Rua Alto", 10, "Centro", "Cyti", "RN", "52124-076", "Chacara");
-		Address address6 = new Address("Rua Luz", 10, "Wesley", "Cajuru", "CB", "12354-076", "Rancho");
+		Address address5 = new Address("Rua Alfredo Moreira", 779, "Centro", "PiraiCyti", "PR", "84240-000", "Casa Mae");
+		Address address6 = new Address("Rua Marechal Deodoro", 2746, "Alto da XV", "Curitiba", "PR", "80230-050", "Apartamento");
 		addressesList5.add(address5);
 		addressesList5.add(address6);
-		contactList.addContact("Jeaoun", "085.436.309-24", "jean@com", CalendarHandler.parseDate("26/01/1973"),
+		contactList.addContact("Jean Rafael", "085.436.309-24", "jean7rafael@outlook.com", CalendarHandler.parseDate("26/01/1973"),
 				addressesList5);
 
 		Scanner scanner = new Scanner(System.in);
