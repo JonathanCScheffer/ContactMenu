@@ -59,9 +59,9 @@ public class PrintLabel implements CommandInterface {
                     App.println(i + " - " + foundedContact.getName());
                 }
             }
-            App.println("Choose one option:");
             int option;
             do {
+                App.println("Choose one option:");
                 option = scanner.nextInt();
                 scanner.nextLine();
             } while (option > matchedContacts.size() || option < 0);
@@ -101,7 +101,7 @@ public class PrintLabel implements CommandInterface {
                     App.println(adrsResidence + ", " + Integer.toString(adrsNumber));
                     App.println(adrsCity + " - " + adrsState);
                     App.println("CEP " + adrsCEP);
-                    scanner.nextLine();
+                    App.println("");
                 }
             }
         } else if (printAllOption == 2) {           
@@ -118,9 +118,9 @@ public class PrintLabel implements CommandInterface {
                     Contact foundedContact = matchedContacts.get(i);
                     App.println(i + " - " + foundedContact.getName());
                 }
-                App.println("Choose one option:");
                 int option;
                 do {
+                    App.println("Choose one option:");
                     option = scanner.nextInt();
                     scanner.nextLine();
                 } while (option > matchedContacts.size() || option < 0);
@@ -136,8 +136,8 @@ public class PrintLabel implements CommandInterface {
                                 App.println(addressIndex + " - " + a.toString());
                                 addressIndex++;
                             }
-                            App.println("Choose one option:");
                             do {
+                                App.println("Choose one option:");
                                 option = scanner.nextInt();
                                 scanner.nextLine();
                             } while ((option > addressIndex) || (option < 0));
@@ -154,6 +154,7 @@ public class PrintLabel implements CommandInterface {
                             App.println(adrsResidence + ", " + Integer.toString(adrsNumber));
                             App.println(adrsCity + " - " + adrsState);
                             App.println("CEP " + adrsCEP);
+                            App.println("");
                     }
                 }
             }    
